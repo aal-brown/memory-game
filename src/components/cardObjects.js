@@ -1,4 +1,3 @@
-import React from "react"
 import yoshi from "./images/yoshi-rs.png"
 import bobOmb from "./images/bob-omb-rs.png"
 import bowser from "./images/bowser-rs.png"
@@ -23,6 +22,7 @@ class Card {
     this.id = id
     this.back = questionBlock
     this.front = front
+    this.view = this.back
   }
 }
 
@@ -38,6 +38,7 @@ let createCardsArr = function(imageArray) {
 
 let cardsArray = createCardsArr(imageArray)
 
-console.log(cardsArray)
+
+export default cardsArray;
 
 

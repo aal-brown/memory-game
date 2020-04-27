@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import "./CardsSelect"
 import './App.css';
 import CardsSelect from './CardsSelect';
-import { createGameCardsArray } from './card-functions'
+import CardsContainer from "./CardsContainer"
+
 import yoshi from "./images/yoshi-rs.png"
 import bobOmb from "./images/bob-omb-rs.png"
 import bowser from "./images/bowser-rs.png"
@@ -17,35 +18,24 @@ import questionBlock from "./images/question-block.png"
 import star from "./images/star-rs.png"
 import toad from "./images/toad-rs.png"
 
-function App() {
-  let cardsArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
-  console.log(createGameCardsArray(cardsArray,8))
 
-  const [view, setView] = useState(0)
+//WHen we click on the number of cards we want, the view will go to the cardsContainer, cardsContainer will receive the the number of cards to generate as props. It will pass this data down to the 
+// <button onClick={setClicks((prev) => prev+1)}>{clicks}</button>
+function App() {
+
+  const [numCards, setNumCards] = useState(0)
   
   return (
     <div className="App">
-      { view === 0 && (
+      { !numCards && (
         <CardsSelect 
-        setView={setView}
+        setNumCards={setNumCards}
         />
       )} 
-      { view === 1 && (
-        <div>
-          <img src={yoshi} alt="Error"/>
-          <img src={bobOmb} alt="Error"/>
-          <img src={bowser} alt="Error"/>
-          <img src={goomba} alt="Error"/>
-          <img src={koopa} alt="Error"/>
-          <img src={luigi} alt="Error"/>
-          <img src={mario} alt="Error"/>
-          <img src={mushroom} alt="Error"/>
-          <img src={peach} alt="Error"/>
-          <img src={piranhaPlant} alt="Error"/>
-          <img src={questionBlock} alt="Error"/>
-          <img src={star} alt="Error"/>
-          <img src={toad} alt="Error"/>
-        </div>
+      { numCards && (
+        <CardsContainer 
+        numCards={numCards}
+        />
       )}
     </div>
   )

@@ -29,17 +29,16 @@ let shuffleCards = function(cardsArray) {
     cardsArrayCopy.splice(randIndex, 1)
     counter++
   }
- 
+  // This overwrites the fact that the same cards will have the same memory address.
+  for (let i = 0; i < shuffledArray.length; i++) {
+    shuffledArray[i] = {...shuffledArray[i]}
+  }
   return shuffledArray;
 }
 
-let createGameCardsArray = function (cardsArray, numCards) {
+export function createGameCardsArray(cardsArray, numCards) {
   let selectedCardsArr = getRandomCards(cardsArray, numCards);
   let shuffledCardsArr = shuffleCards([...selectedCardsArr, ...selectedCardsArr])
   
   return shuffledCardsArr;
-}
-
-module.exports = {
-  createGameCardsArray
 }
