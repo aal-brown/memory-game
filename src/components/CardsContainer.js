@@ -3,6 +3,7 @@ import cardsArray from './cardObjects.js'
 import { createGameCardsArray } from './card-functions'
 import CardItem from './CardItem.js';
 import "./cardsContainer.css"
+import emptyImg from "./images/empty.png"
 
 //On click this.view will be changed
 //The reason I am using index as key is because I will not be changing the order of the elements or deleting them, and there is no other identifying characteristic of each card, since the card id's will not be unique. There will be two of each card ID in every game.
@@ -12,7 +13,7 @@ function CardsContainer(props) {
  
   let [cards, setCards] = useState(gameCardsArray)
   // Turn is either 1 or 2, when turn is equal to two, then the comparison will occur to check if the cards are the same.
-  let [turn, setTurn] = useState(1)
+  let [turn, setTurn] = useState(0)
 
   //This has to be done to make the original render. If we try to do it in the useEffect function it won't work because useEffect is asynchronous
   // This variable just works off of the values from the cards state, it doesn't need to be preserved between renders, because "cards" captures the state already.
@@ -24,7 +25,7 @@ function CardsContainer(props) {
           key={index}
           index={index}
           cards={cards}
-          image={""}
+          image={emptyImg}
           setCards={setCards}
           setTurn={setTurn}
           />

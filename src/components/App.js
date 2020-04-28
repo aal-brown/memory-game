@@ -3,6 +3,7 @@ import "./CardsSelect"
 import './App.css';
 import CardsSelect from './CardsSelect';
 import CardsContainer from "./CardsContainer"
+import PlayersInterface from "./PlayersInterface"
 
 import yoshi from "./images/yoshi-rs.png"
 import bobOmb from "./images/bob-omb-rs.png"
@@ -23,19 +24,27 @@ import toad from "./images/toad-rs.png"
 // <button onClick={setClicks((prev) => prev+1)}>{clicks}</button>
 function App() {
 
-  const [numCards, setNumCards] = useState(0)
+  const [numCards, setNumCards] = useState()
+  const [scores, setScores] = useState({player1: 0, player2: 0})
   
   return (
     <div className="App">
       { !numCards && (
         <CardsSelect 
-        setNumCards={setNumCards}
+          setNumCards={setNumCards}
         />
       )} 
       { numCards && (
-        <CardsContainer 
-        numCards={numCards}
-        />
+        <React.Fragment>
+          <PlayersInterface 
+            scores={scores}
+          />
+          <CardsContainer
+            scores={scores}
+            setScores={setScores}
+            numCards={numCards}
+          />
+        </React.Fragment>
       )}
     </div>
   )
