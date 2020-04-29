@@ -50,14 +50,16 @@ function CardItem(props) {
         let matchArr = checkMatch(cardsArr)
 
         if(matchArr) {
+          props.setScores({...props.scores, [props.currPlayer]: props.scores[props.currPlayer] + 1})
           cardsArr[matchArr[0]].view = ""
           cardsArr[matchArr[1]].view = ""
-          //Update player score
           props.setCards(cardsArr)
         }
+        
       }
     } else {
       if (props.image === props.cards[props.index].back) {
+        props.setCurrPlayer((props.currPlayer === "player1" ? "player2" : "player1"))
         props.setTurn(1)
         let updatedCardsArray = resetCards(cardsArr)
         updatedCardsArray[props.index].view = props.cards[props.index].front

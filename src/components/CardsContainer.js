@@ -8,6 +8,19 @@ import emptyImg from "./images/empty.png"
 //On click this.view will be changed
 //The reason I am using index as key is because I will not be changing the order of the elements or deleting them, and there is no other identifying characteristic of each card, since the card id's will not be unique. There will be two of each card ID in every game.
 function CardsContainer(props) {
+
+  let conditionalClass = "cards8"
+
+  switch(props.numCards) {
+    case 16:
+      conditionalClass = "cards16"
+      break;
+    case 24:
+      conditionalClass = "cards24"
+      break;
+    default:
+      break;
+  }
  
   let gameCardsArray = createGameCardsArray(cardsArray, props.numCards)
  
@@ -21,6 +34,10 @@ function CardsContainer(props) {
       if(!card.view) { //This will be used for when a card is "removed" after a matching pair is found.
         return (
           <CardItem
+          currPlayer={props.currPlayer}
+          setCurrPlayer={props.setCurrPlayer}
+          scores={props.scores}
+          setScores={props.setScores}
           turn={turn}
           key={index}
           index={index}
@@ -33,6 +50,10 @@ function CardsContainer(props) {
       } else {
         return (
           <CardItem
+          currPlayer={props.currPlayer}
+          setCurrPlayer={props.setCurrPlayer}
+          scores={props.scores}
+          setScores={props.setScores}
           turn={turn}
           key={index}
           index={index}
@@ -46,27 +67,39 @@ function CardsContainer(props) {
     })
 
 
-  //I can stick the card generation inside of a useEffect?
+  //I can stick the card generation inside of a useEffect? This doesn't appear to be necessary?
   useEffect(() => {
     gameCardsElementArr = cards.map((card, index) => {
       if(!card.view) {
         return (
           <CardItem
+          currPlayer={props.currPlayer}
+          setCurrPlayer={props.setCurrPlayer}
+          scores={props.scores}
+          setScore={props.setScores}
+          turn={turn}
           key={index}
           index={index}
           cards={cards}
-          image={null}
+          image={emptyImg}
           setCards={setCards}
+          setTurn={setTurn}
           />
         )
       } else {
         return (
           <CardItem
+          currPlayer={props.currPlayer}
+          setCurrPlayer={props.setCurrPlayer}
+          scores={props.scores}
+          setScores={props.setScores}
+          turn={turn}
           key={index}
           index={index}
           cards={cards}
           image={card.view}
           setCards={setCards}
+          setTurn={setTurn}
           />
         )
       }
@@ -75,7 +108,7 @@ function CardsContainer(props) {
   
 
   return (
-    <section className="cardsContainer">
+    <section className={`${conditionalClass}`}>
       {gameCardsElementArr}
     </section>
   );

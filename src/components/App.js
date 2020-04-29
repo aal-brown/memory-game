@@ -26,6 +26,7 @@ function App() {
 
   const [numCards, setNumCards] = useState()
   const [scores, setScores] = useState({player1: 0, player2: 0})
+  const [currPlayer, setCurrPlayer] = useState("player1")
   
   return (
     <div className="App">
@@ -38,8 +39,13 @@ function App() {
         <React.Fragment>
           <PlayersInterface 
             scores={scores}
+            setScores={setScores}
+            setCurrPlayer={setCurrPlayer}
+            setNumCards={setNumCards}
           />
           <CardsContainer
+            currPlayer={currPlayer}
+            setCurrPlayer={setCurrPlayer}
             scores={scores}
             setScores={setScores}
             numCards={numCards}
