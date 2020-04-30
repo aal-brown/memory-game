@@ -1,3 +1,5 @@
+Main page has users select the number of cards to generate. Cards page is then generated with the correct number of cards, selected from available cards at random, also placed at random, each card has exactly 1 matching card. Scores are initialized to 0. Player 1 starts first and flips cards, when player two clicks on the next card, the others already flipped will flip back. After each player has had two flips, it switches to the other player. When a match is found the score is increased for the corresponding player, and the cards are "removed" from play.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
