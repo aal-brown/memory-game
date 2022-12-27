@@ -9,8 +9,7 @@ let getRandomCards = function (cardsArray, numCards) {
 
   while (counter <= numCards/2) {
     randIndex = Math.floor(Math.random() * (cardsArrayCopy.length - 1))
-    randomCards.push(cardsArrayCopy[randIndex])
-    cardsArrayCopy.splice(randIndex, 1)
+    randomCards.push(...cardsArrayCopy.splice(randIndex, 1))
     counter++
   }
 
@@ -25,8 +24,7 @@ let shuffleCards = function(cardsArray) {
 
   while (cardsArrayCopy.length) {
     randIndex = Math.floor(Math.random() * (cardsArrayCopy.length - 1))
-    shuffledArray.push(cardsArrayCopy[randIndex])
-    cardsArrayCopy.splice(randIndex, 1)
+    shuffledArray.push(...cardsArrayCopy.splice(randIndex, 1))
     counter++
   }
   // This overwrites the fact that the same cards will have the same memory address.
