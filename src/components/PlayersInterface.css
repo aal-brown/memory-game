@@ -1,6 +1,7 @@
 .players-interface {
   width: 50%;
   height: 50%;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +9,7 @@
 }
 
 .players-interface h1 {
-  margin: 0;
+  margin-bottom: 1rem;
   padding: 0;
 }
 
@@ -19,7 +20,7 @@
 
 .scores {
   height: 100%;
-  margin: 0;
+  margin-bottom: 1rem;
   padding: 0;
   width: 100%;
   display: flex;

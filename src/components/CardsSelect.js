@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import CardsNumberButton from "./CardsNumberButton";
 
+const NUM_CARDS = [8, 16, 24]
 
 function CardsSelect(props) {
-
   return (
     <section className="CardsSelect">
       <h1>Number of Cards</h1>
-      <button style={{ marginRight: 2 + 'rem' }} onClick={() => props.setNumCards(8)}>8</button>
-      <button onClick={() => props.setNumCards(16)}>16</button>
-      <button onClick={() => props.setNumCards(24)}>24</button>
+      { NUM_CARDS.map(cardsNumber => {
+        return <CardsNumberButton cardsNumber={cardsNumber} setNumCards={props.setNumCards} />
+      })}
     </section>
   );
 }

@@ -12,7 +12,6 @@ import questionBlock from "./images/question-block.png"
 import star from "./images/star-rs.png"
 import toad from "./images/toad-rs.png"
 
-
 //Making the cards instances of a class will allow me to add methods if necessary that will be applied equally to all. It will also make it simpler to create the objects.
 
 let imageArray = [bobOmb, bowser, goomba, koopa, luigi, mario, mushroom, peach, piranhaPlant, star, toad, yoshi];
@@ -37,7 +36,6 @@ let createCardsArr = function(imageArray) {
 }
 
 let cardsArray = createCardsArr(imageArray)
-
 
 export default cardsArray;
 
